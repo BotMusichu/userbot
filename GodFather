@@ -39,7 +39,7 @@ _set_bot () {
     cd $TGNPATH
     echo " STARTING GODFATHER USERBOT "
 
-    python3 ./setup/updater.py ./requirements.txt requirements.txt
+    python3 ../setup/updater.py ./requirements.txt requirements.txt
     python3 -m TheGodfather
 }
 
