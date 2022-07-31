@@ -1,0 +1,46 @@
+#!/bin/bash
+
+
+_get_repolink () {
+    local regex
+    regex='(https?)://github.com/.+/.+'
+    if [[ $TGN_REPO == "Godfather" ]]
+    then
+        echo "aHR0cHM6Ly9naXRodWIuY29tL1RlYW0tVEdOL0dvZGZhdGhlci9hcmNoaXZlL21haW4uemlw" | base64 -d
+    elif [[ $TGN_REPO == "Godfather" ]]
+    then
+        echo "aHR0cHM6Ly9naXRodWIuY29tL1RlYW0tVEdOL0dvZGZhdGhlci9hcmNoaXZlL21haW4uemlw" | base64 -d
+    elif [[ $TGN_REPO =~ $regex ]]
+    then
+        if [[ $TGN_REPO_BRANCH ]]
+        then
+            echo "${TGN_REPO}/archive/${TGN_REPO_BRANCH}.zip"
+        else
+            echo "${TGN_REPO}/archive/main.zip"
+        fi
+    else
+        echo "aHR0cHM6Ly9naXRodWIuY29tL1RlYW0tVEdOL0dvZGZhdGhlci9hcmNoaXZlL21haW4uemlw" | base64 -d
+    fi
+}
+
+
+_set_bot () {
+    local zippath
+    zippath="Godfather.zip"
+    echo "  Downloading source code ..."
+    wget -q $(_get_repolink) -O "$zippath"
+    echo "  Unpacking Data ..."
+    TGNPATH=$(zipinfo -1 "$zippath" | grep -v "/.");
+    unzip -qq "$zippath"
+    echo "Done"
+    echo "  Cleaning ..."
+    rm -rf "$zippath"
+    sleep 5
+    cd $TGNPATH
+    echo " STARTING GODFATHER USERBOT "
+
+    python3 ./setup/updater.py ./requirements.txt requirements.txt
+    python3 -m TheGodfather
+}
+
+_set_bot
