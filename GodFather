@@ -6,10 +6,10 @@ _get_repolink () {
     regex='(https?)://github.com/.+/.+'
     if [[ $TGN_REPO == "Godfather" ]]
     then
-        echo "aHR0cHM6Ly9naXRodWIuY29tL1RlYW0tVEdOL0dvZGZhdGhlci9hcmNoaXZlL21haW4uemlw" | base64 -d
+        echo "aHR0cHM6Ly9naXRodWIuY29tL1RlYW0tVEdOL0dvZGZhdGhlckFkZG9uL2FyY2hpdmUvbWFpbi56aXA=" | base64 -d
     elif [[ $TGN_REPO == "Godfather" ]]
     then
-        echo "aHR0cHM6Ly9naXRodWIuY29tL1RlYW0tVEdOL0dvZGZhdGhlci9hcmNoaXZlL21haW4uemlw" | base64 -d
+        echo "aHR0cHM6Ly9naXRodWIuY29tL1RlYW0tVEdOL0dvZGZhdGhlckFkZG9uL2FyY2hpdmUvbWFpbi56aXA=" | base64 -d
     elif [[ $TGN_REPO =~ $regex ]]
     then
         if [[ $TGN_REPO_BRANCH ]]
@@ -19,7 +19,7 @@ _get_repolink () {
             echo "${TGN_REPO}/archive/main.zip"
         fi
     else
-        echo "aHR0cHM6Ly9naXRodWIuY29tL1RlYW0tVEdOL0dvZGZhdGhlci9hcmNoaXZlL21haW4uemlw" | base64 -d
+        echo "aHR0cHM6Ly9naXRodWIuY29tL1RlYW0tVEdOL0dvZGZhdGhlckFkZG9uL2FyY2hpdmUvbWFpbi56aXA=" | base64 -d
     fi
 }
 
