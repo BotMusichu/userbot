@@ -4,7 +4,7 @@ A Telegram Userbot written with python by using pyrogram client
 # Requirements
 - python 3.7+
 - A Telegram dummy account
-- mongo Database
+- [mongo Database](mongodb.com)
 - String Session (PyroGram)
 - Hosting provider
 #
